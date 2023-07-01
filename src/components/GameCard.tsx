@@ -1,6 +1,14 @@
-import { Card, Heading, Image, CardHeader, Text } from '@chakra-ui/react';
+import {
+  Card,
+  Heading,
+  Image,
+  CardHeader,
+  Text,
+  HStack,
+} from '@chakra-ui/react';
 import React from 'react';
 import { Game } from '../hooks/useFetchGame';
+import CriticScore from './CriticScore';
 import PlatformIcon from './PlatformIcon';
 
 interface Props {
@@ -14,11 +22,13 @@ const GameCard = ({ game }: Props) => {
       <Heading fontSize='20px' padding={2}>
         {game.name}
       </Heading>
-      <Text>
+
+      <HStack justifyContent='space-between' margin={5}>
         <PlatformIcon
           platforms={game.parent_platforms.map((platform) => platform.platform)}
         />
-      </Text>
+        <CriticScore criticScore={game.metacritic} />
+      </HStack>
     </Card>
   );
 };
