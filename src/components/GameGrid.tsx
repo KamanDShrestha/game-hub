@@ -1,22 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import apiClient from '../services/api-client';
-import { Text } from '@chakra-ui/react';
+import { SimpleGrid, Text } from '@chakra-ui/react';
 
 import useFetchGame from '../hooks/useFetchGame';
 import Loader from './Loader';
-
-//while fetching the data we are getting the object with id and name property, so we are providing the type to the variables
-interface Game {
-  id: number;
-  name: string;
-}
-
-interface FetchGamesResponse {
-  count: number;
-  //we are getting the array of the objects with Game like property/schema
-  results: Game[];
-}
+import GameCard from './GameCard';
 
 const GameGrid = () => {
   const { games, error, isLoading } = useFetchGame();
@@ -27,11 +16,11 @@ const GameGrid = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <ul>
+        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} padding={10}>
           {games.map((game) => (
-            <li key={game.id}>{game.name}</li>
+            <GameCard game={game} key={game.id} />
           ))}
-        </ul>
+        </SimpleGrid>
       )}
     </>
   );

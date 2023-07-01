@@ -2,9 +2,11 @@ import { CanceledError } from 'axios';
 import { useState, useEffect } from 'react';
 import apiClient from '../services/api-client';
 
-interface Game {
+//while fetching the data we are getting the object with id and name property, so we are providing the type to the variables
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGamesResponse {
@@ -19,7 +21,7 @@ function useFetchGame() {
   const [isLoading, setIsLoading] = useState(false);
 
   //useEffect to fetch the games, sideEffects -- communicating with the external entity
-
+  console.log(games);
   useEffect(() => {
     const controller = new AbortController();
     setIsLoading(true);
