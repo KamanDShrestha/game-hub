@@ -3,7 +3,7 @@ import useFetchGenres from '../hooks/useFetchGenres';
 import Loader from './Loader';
 
 const GenreList = () => {
-  const { genres, isLoading, error } = useFetchGenres();
+  const { data: genres, isLoading, error } = useFetchGenres();
   return (
     <ul>
       {error && <p>{error}</p>}
