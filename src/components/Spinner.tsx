@@ -1,16 +1,22 @@
 import React from 'react';
-
+import { Spinner } from '@chakra-ui/react';
 const Loader = () => {
   return (
     <div
       style={{
         display: 'flex',
-        textAlign: 'center',
+        // textAlign: 'center',
         justifyContent: 'center',
         alignItems: 'center',
       }}
     >
-      Loading...
+      <Spinner
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
+      />
     </div>
   );
 };

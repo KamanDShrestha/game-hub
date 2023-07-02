@@ -4,7 +4,7 @@ import apiClient from '../services/api-client';
 import { SimpleGrid, Text } from '@chakra-ui/react';
 
 import useFetchGame from '../hooks/useFetchGame';
-import Loader from './Loader';
+
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
@@ -16,7 +16,7 @@ const GameGrid = () => {
     <>
       {error && <Text>{error}</Text>}
 
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} padding={10}>
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} padding={1} spacing={2}>
         {isLoading &&
           skeletons.map((number) => (
             <GameCardContainer key={number}>

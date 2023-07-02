@@ -5,7 +5,7 @@ import GameCard from './GameCard';
 const GameCardSkeleton = () => {
   return (
     <Card>
-      <Skeleton height={'200px'} />
+      <Skeleton height={'250px'} />
       <CardBody>
         <SkeletonText />
       </CardBody>
