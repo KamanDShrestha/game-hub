@@ -2,6 +2,7 @@ import { CanceledError } from 'axios';
 import { useState, useEffect } from 'react';
 import apiClient from '../services/api-client';
 import useFetchData from './useFetchData';
+import { Genre } from './useFetchGenres';
 
 export interface Platform {
   id: number;
@@ -18,8 +19,15 @@ export interface Game {
   metacritic: number;
 }
 
-function useFetchGame() {
-  return useFetchData<Game>('/games');
+function useFetchGame(selectedGenre: Genre | null) {
+  //making the get request flexible through the use of axios Request Config object  -- request config
+  return useFetchData<Game>(
+    '/games',
+    {
+      params: { genres: selectedGenre?.id },
+    },
+    [selectedGenre?.id]
+  );
 }
 
 export default useFetchGame;

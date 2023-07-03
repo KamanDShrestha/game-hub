@@ -1,9 +1,14 @@
 import { VStack } from '@chakra-ui/react';
 import React from 'react';
-import useFetchGenres from '../hooks/useFetchGenres';
+import useFetchGenres, { Genre } from '../hooks/useFetchGenres';
 import Spinner from './Spinner';
 import GenreItem from './GenreItem';
-const GenreList = () => {
+
+interface Props {
+  onSelectedGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectedGenre }: Props) => {
   const { data: genres, isLoading, error } = useFetchGenres();
   return (
     <>
@@ -12,7 +17,11 @@ const GenreList = () => {
         {error && <p>{error}</p>}
 
         {genres.map((genre) => (
-          <GenreItem key={genre.id} genre={genre} />
+          <GenreItem
+            key={genre.id}
+            genre={genre}
+            onSelectedGenre={onSelectedGenre}
+          />
           // <li key={genre.id}>{genre.name}</li>
         ))}
       </VStack>

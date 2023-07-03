@@ -1,0 +1,4 @@
+.each:hover {
+  cursor: pointer;
+  filter: brightness(110%);
+}
