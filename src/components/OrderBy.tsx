@@ -8,18 +8,32 @@ interface Props {
 }
 
 const OrderBy = ({ selectedOrdering, onSelectedOrdering }: Props) => {
+  const sortOrder = [
+    { value: '', label: 'Relevance' },
+    { value: '-added', label: 'Date added' },
+    { value: 'name', label: 'Name' },
+    { value: '-released', label: 'Release Date' },
+    { value: '-metacritic', label: 'Popularity' },
+    { value: '-rating', label: 'Average Rating' },
+  ];
+  const selectedSort = sortOrder.find(
+    (order) => order.value === selectedOrdering
+  );
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Order By: {selectedOrdering}
+        Order By: {selectedSort?.label}
       </MenuButton>
       <MenuList>
-        <MenuItem>Relevance</MenuItem>
-        <MenuItem>Date added</MenuItem>
-        <MenuItem>Name</MenuItem>
-        <MenuItem>Release date</MenuItem>
-        <MenuItem>Popularity</MenuItem>
-        <MenuItem>Average Rating</MenuItem>
+        {sortOrder.map((order) => (
+          <MenuItem
+            key={order.value}
+            value={order.value}
+            onClick={() => onSelectedOrdering(order.value)}
+          >
+            {order.label}
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );

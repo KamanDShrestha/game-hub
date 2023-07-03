@@ -60,7 +60,9 @@ export const App = () => {
               selectedPlatform={gameQuery.platform}
             />
             <OrderBy
-              onSelectedOrdering={}
+              onSelectedOrdering={(ordering) =>
+                setGameQuery({ ...gameQuery, ordering })
+              }
               selectedOrdering={gameQuery.ordering}
             />
           </HStack>
