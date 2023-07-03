@@ -8,16 +8,26 @@ import styles from './GenreItem.module.css';
 interface Props {
   genre: Genre;
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreItem = ({ genre, onSelectedGenre }: Props) => {
+const GenreItem = ({ genre, onSelectedGenre, selectedGenre }: Props) => {
   return (
-    <HStack className={styles.each}>
+    <HStack className={styles.each} gap={3.5}>
       <Image
         src={getCroppedImageUrl(genre.image_background)}
         boxSize={'32px'}
+        borderRadius={'5px'}
+        overflow={'hidden'}
       />
-      <Button fontSize={'lg'} onClick={() => onSelectedGenre(genre)}>
+
+      <Button
+        variant={'link'}
+        fontSize={'lg'}
+        onClick={() => onSelectedGenre(genre)}
+        fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'light'}
+        textDecoration={selectedGenre?.id === genre.id ? 'underline' : 'none'}
+      >
         {genre.name}
       </Button>
     </HStack>

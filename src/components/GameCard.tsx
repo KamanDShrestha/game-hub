@@ -20,7 +20,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card>
       <Image
-        src={getCroppedImageUrl(game.background_image)}
+        src={getCroppedImageUrl(game.background_image) || undefined}
         objectFit={'cover'}
       />
       <Heading fontSize='20px' padding={2}>
