@@ -6,9 +6,10 @@ import GenreItem from './GenreItem';
 
 interface Props {
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectedGenre }: Props) => {
+const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
   const { data: genres, isLoading, error } = useFetchGenres();
   return (
     <>
@@ -21,6 +22,7 @@ const GenreList = ({ onSelectedGenre }: Props) => {
             key={genre.id}
             genre={genre}
             onSelectedGenre={onSelectedGenre}
+            selectedGenre={selectedGenre}
           />
           // <li key={genre.id}>{genre.name}</li>
         ))}
