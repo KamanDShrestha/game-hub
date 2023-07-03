@@ -24,6 +24,7 @@ function useFetchGame(gameQuery: GameQuery) {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.ordering,
+        search: gameQuery.searchQuery,
       },
     },
     [gameQuery]
