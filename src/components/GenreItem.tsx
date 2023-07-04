@@ -1,4 +1,4 @@
-import { HStack } from '@chakra-ui/react';
+import { HStack, Heading } from '@chakra-ui/react';
 import React from 'react';
 import { Genre } from '../hooks/useFetchGenres';
 import { Image, Text, Button } from '@chakra-ui/react';
@@ -13,24 +13,29 @@ interface Props {
 
 const GenreItem = ({ genre, onSelectedGenre, selectedGenre }: Props) => {
   return (
-    <HStack className={styles.each} gap={3.5}>
-      <Image
-        src={getCroppedImageUrl(genre.image_background)}
-        boxSize={'32px'}
-        borderRadius={'5px'}
-        overflow={'hidden'}
-      />
+    <>
+      <HStack className={styles.each} gap={3.5}>
+        <Image
+          src={getCroppedImageUrl(genre.image_background)}
+          boxSize={'32px'}
+          borderRadius={'5px'}
+          overflow={'hidden'}
+          marginX={'2px'}
+        />
 
-      <Button
-        variant={'link'}
-        fontSize={'lg'}
-        onClick={() => onSelectedGenre(genre)}
-        fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'light'}
-        textDecoration={selectedGenre?.id === genre.id ? 'underline' : 'none'}
-      >
-        {genre.name}
-      </Button>
-    </HStack>
+        <Button
+          variant={'link'}
+          fontSize={'lg'}
+          whiteSpace={'normal'}
+          textAlign={'left'}
+          onClick={() => onSelectedGenre(genre)}
+          fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'light'}
+          textDecoration={selectedGenre?.id === genre.id ? 'underline' : 'none'}
+        >
+          {genre.name}
+        </Button>
+      </HStack>
+    </>
   );
 };
 

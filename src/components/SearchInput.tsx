@@ -18,6 +18,7 @@ const SearchInput = ({ onProvideSearch }: Props) => {
       }
     }
     window.addEventListener('keydown', (e) => callback(e));
+    return () => window.removeEventListener('keydown', (e) => callback(e));
   });
   return (
     <form

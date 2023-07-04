@@ -3,7 +3,7 @@ import React from 'react';
 import useFetchGenres, { Genre } from '../hooks/useFetchGenres';
 import Spinner from './Spinner';
 import GenreItem from './GenreItem';
-
+import { Heading } from '@chakra-ui/react';
 interface Props {
   onSelectedGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
@@ -13,6 +13,9 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
   const { data: genres, isLoading, error } = useFetchGenres();
   return (
     <>
+      <Heading as={'h1'} size={'lg'} textAlign={'center'}>
+        Genres
+      </Heading>
       {isLoading && <Spinner />}
       <VStack align={'start'} marginX={4} marginY={4} gap={4}>
         {error && <p>{error}</p>}
