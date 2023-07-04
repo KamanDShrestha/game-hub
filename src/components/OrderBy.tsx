@@ -1,13 +1,17 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
+import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
 
 interface Props {
   selectedOrdering: string;
   onSelectedOrdering: (arg0: string) => void;
 }
 
-const OrderBy = ({ selectedOrdering, onSelectedOrdering }: Props) => {
+const OrderBy = () => {
+  const { gameQuery, handleGame } = useContext(
+    GameContext
+  ) as ProvidedContextType;
   const sortOrder = [
     { value: '', label: 'Relevance' },
     { value: '-added', label: 'Date added' },
@@ -17,7 +21,7 @@ const OrderBy = ({ selectedOrdering, onSelectedOrdering }: Props) => {
     { value: '-rating', label: 'Average Rating' },
   ];
   const selectedSort = sortOrder.find(
-    (order) => order.value === selectedOrdering
+    (order) => order.value === gameQuery.ordering
   );
   return (
     <Menu>
@@ -29,7 +33,7 @@ const OrderBy = ({ selectedOrdering, onSelectedOrdering }: Props) => {
           <MenuItem
             key={order.value}
             value={order.value}
-            onClick={() => onSelectedOrdering(order.value)}
+            onClick={() => handleGame({ ...gameQuery, ordering: order.value })}
           >
             {order.label}
           </MenuItem>

@@ -6,13 +6,12 @@ import darklogo from '../assets/gamehub-low-resolution-logo-color-on-transparent
 import ColorSwitch from './ColorSwitch';
 import SearchInput from './SearchInput';
 import { useColorMode } from '@chakra-ui/react';
+import { ProvidedContextType } from '../contexts/GameProvider';
 // import { useGameContext } from '../contexts/GameContextProvider';
+import { useContext } from 'react';
+import { GameContext } from '../contexts/GameProvider';
 
-interface Props {
-  onProvideSearch: (data: string) => void;
-}
-
-export const NavBar = ({ onProvideSearch }: Props) => {
+export const NavBar = () => {
   const { colorMode } = useColorMode();
   // const {setGameQuery} = useGameContext();
 
@@ -22,7 +21,7 @@ export const NavBar = ({ onProvideSearch }: Props) => {
         src={colorMode === 'light' ? lightlogo : darklogo}
         boxSize='60px'
       />
-      <SearchInput onProvideSearch={onProvideSearch} />
+      <SearchInput />
       <ColorSwitch />
     </HStack>
   );

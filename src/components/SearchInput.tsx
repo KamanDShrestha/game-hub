@@ -3,23 +3,26 @@ import { useRef, useEffect } from 'react';
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { BsSearch } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
+import { useContext } from 'react';
+import { GameContext } from '../contexts/GameProvider';
+import { ProvidedContextType } from '../contexts/GameProvider';
 
-interface Props {
-  onProvideSearch: (data: string) => void;
-}
+const SearchInput = () => {
+  const { gameQuery, handleGame } = useContext(
+    GameContext
+  ) as ProvidedContextType;
 
-const SearchInput = ({ onProvideSearch }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     function callback(e: KeyboardEvent) {
       if (inputRef.current == null) return;
       if (e.key === 'Enter') {
-        onProvideSearch(inputRef.current.value);
+        handleGame({ ...gameQuery, searchQuery: inputRef.current.value });
       }
     }
     window.addEventListener('keydown', (e) => callback(e));
     return () => window.removeEventListener('keydown', (e) => callback(e));
-  });
+  }, []);
   return (
     <form
       onSubmit={(e) => {

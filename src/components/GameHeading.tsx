@@ -1,12 +1,15 @@
 import { Heading } from '@chakra-ui/react';
 import React from 'react';
 import { GameQuery } from '../App';
+import { useContext } from 'react';
+import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
 
 interface Props {
   gameQuery: GameQuery;
 }
 
-const GameHeading = ({ gameQuery }: Props) => {
+const GameHeading = () => {
+  const { gameQuery } = useContext(GameContext) as ProvidedContextType;
   if (gameQuery?.searchQuery) {
     return (
       <Heading
