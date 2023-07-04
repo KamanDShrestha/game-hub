@@ -10,7 +10,7 @@ interface Props {
 }
 
 const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
-  const { data: genres, isLoading, error } = useFetchGenres();
+  const { genres, isLoading, error } = useFetchGenres();
   return (
     <>
       <Heading as={'h1'} size={'lg'} textAlign={'center'}>

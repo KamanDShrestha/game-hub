@@ -2,6 +2,8 @@ import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
 import useFetchData from './useFetchData';
+
+import genres from '../data/genres';
 export interface Genre {
   id: number;
   name: string;
@@ -11,7 +13,7 @@ export interface Genre {
 }
 
 function useFetchGenres() {
-  return useFetchData<Genre>('/genres');
+  return { genres, isLoading: false, error: false };
 }
 
 export default useFetchGenres;
