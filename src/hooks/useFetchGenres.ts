@@ -1,14 +1,16 @@
-import apiClient from '../services/api-client';
+import APIClient, { FetchDataRespose } from '../services/api-client';
 import genres from '../data/genres';
 import { useQuery } from '@tanstack/react-query';
 import { Genre } from './useFetchGame';
 
+const apiClient = new APIClient<Genre>('/genres');
+
 function useFetchGenres() {
-  return useQuery<Genre[], Error>({
+  return useQuery<FetchDataRespose<Genre>, Error>({
     queryKey: ['genres'],
-    queryFn: () => apiClient.get('/genres').then((res) => res.data.results),
+    queryFn: () => apiClient.fetchData(),
     staleTime: 24 * 60 * 60 * 1000, //24hr
-    initialData: genres,
+    initialData: { count: genres.length, results: genres },
   });
 }
 
