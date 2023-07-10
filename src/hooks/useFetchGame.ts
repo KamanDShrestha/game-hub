@@ -2,13 +2,27 @@ import { CanceledError } from 'axios';
 import { useState, useEffect } from 'react';
 import apiClient, { FetchDataRespose } from '../services/api-client';
 // import useFetchData, { FetchDataRespose } from './useFetchData';
-import { Genre } from './useFetchGenres';
 
 import { GameQuery } from '../App';
 import { useQuery } from '@tanstack/react-query';
-import { Platform } from './useFetchPlatforms';
 
 //while fetching the data we are getting the object with id and name property, so we are providing the type to the variables
+
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+  games_count: number;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
+  slug: string;
+  games_count: number;
+  image_background: string;
+}
+
 export interface Game {
   id: number | null;
   name: string;

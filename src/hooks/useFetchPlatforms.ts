@@ -2,13 +2,7 @@
 import platforms from '../data/platforms';
 import apiClient, { FetchDataRespose } from '../services/api-client';
 import { useQuery } from '@tanstack/react-query';
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-  games_count: number;
-}
-
+import { Platform } from './useFetchGame';
 //just to fetch the platform values
 function useFetchPlatform() {
   const fetchedPlatforms = useQuery<FetchDataRespose<Platform>, Error>({

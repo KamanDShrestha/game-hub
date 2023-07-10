@@ -1,14 +1,7 @@
 import apiClient from '../services/api-client';
 import genres from '../data/genres';
 import { useQuery } from '@tanstack/react-query';
-
-export interface Genre {
-  id: number;
-  name: string;
-  slug: string;
-  games_count: number;
-  image_background: string;
-}
+import { Genre } from './useFetchGame';
 
 function useFetchGenres() {
   return useQuery<Genre[], Error>({
