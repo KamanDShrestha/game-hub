@@ -14,14 +14,14 @@ const PlatformSelection = () => {
   const { gameQuery, handleGame } = useContext(
     GameContext
   ) as ProvidedContextType;
-  const { platforms, isLoading, error } = useFetchPlatform();
+  const { data, isLoading, error } = useFetchPlatform();
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         {gameQuery.platform?.name || 'Platforms'}
       </MenuButton>
       <MenuList>
-        {platforms.map((platform) => (
+        {data?.results.map((platform) => (
           <MenuItem
             onClick={() => handleGame({ ...gameQuery, platform })}
             key={platform.id}
