@@ -30,11 +30,9 @@ const GenreItem = ({ genre }: Props) => {
           fontSize={'lg'}
           whiteSpace={'normal'}
           textAlign={'left'}
-          onClick={() => handleGame({ ...gameQuery, genre: genre })}
-          fontWeight={gameQuery.genre?.id === genre.id ? 'bold' : 'light'}
-          textDecoration={
-            gameQuery.genre?.id === genre.id ? 'underline' : 'none'
-          }
+          onClick={() => handleGame({ ...gameQuery, genreID: genre.id })}
+          fontWeight={gameQuery.genreID === genre.id ? 'bold' : 'light'}
+          textDecoration={gameQuery.genreID === genre.id ? 'underline' : 'none'}
         >
           {genre.name}
         </Button>

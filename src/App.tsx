@@ -18,8 +18,8 @@ import {
 // import { GameProvider, useGameContext } from './contexts/GameContextProvider';
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreID: number | undefined;
+  platformID: number | undefined;
   ordering: string;
   searchQuery: string;
 }

@@ -6,25 +6,25 @@ import { BsChevronDown } from 'react-icons/bs';
 import { Button } from '@chakra-ui/react';
 import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
 
-interface Props {
-  onSelectedPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
-}
-
 const PlatformSelection = () => {
   const { gameQuery, handleGame } = useContext(
     GameContext
   ) as ProvidedContextType;
   const { data, isLoading, error } = useFetchPlatform();
+  const selectedPlatformName = data.results.filter(
+    (platform) => platform.id === gameQuery.platformID
+  )[0]?.name;
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {gameQuery.platform?.name || 'Platforms'}
+        {selectedPlatformName || 'Platforms'}
       </MenuButton>
       <MenuList>
         {data?.results.map((platform) => (
           <MenuItem
-            onClick={() => handleGame({ ...gameQuery, platform })}
+            onClick={() =>
+              handleGame({ ...gameQuery, platformID: platform.id })
+            }
             key={platform.id}
           >
             {platform.name}

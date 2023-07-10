@@ -41,8 +41,8 @@ function useFetchGame(gameQuery: GameQuery) {
     queryFn: ({ pageParam = 1 }) =>
       apiClient.fetchData({
         params: {
-          genres: gameQuery?.genre?.id,
-          platforms: gameQuery?.platform?.id,
+          genres: gameQuery?.genreID,
+          platforms: gameQuery?.platformID,
           ordering: gameQuery?.ordering,
           search: gameQuery?.searchQuery,
           page: pageParam,
