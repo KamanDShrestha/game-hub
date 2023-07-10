@@ -1,6 +1,6 @@
 import { HStack, Heading } from '@chakra-ui/react';
 import React, { useContext } from 'react';
-import { Genre } from '../hooks/useFetchGenres';
+import { Genre } from '../hooks/useFetchGame';
 import { Image, Text, Button } from '@chakra-ui/react';
 import getCroppedImageUrl from '../services/getCroppedImageUrl';
 import styles from './GenreItem.module.css';

@@ -3,10 +3,10 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import { NavBar } from './components/NavBar';
 import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
-import { Genre } from './hooks/useFetchGenres';
+import { Genre } from './hooks/useFetchGame';
 import { useContext, useState } from 'react';
 import PlatformSelection from './components/PlatformSelection';
-import { Platform } from './hooks/useFetchPlatforms';
+import { Platform } from './hooks/useFetchGame';
 import OrderBy from './components/OrderBy';
 import GameHeading from './components/GameHeading';
 import {
