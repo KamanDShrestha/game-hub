@@ -7,6 +7,7 @@ import {
   HStack,
   Box,
 } from '@chakra-ui/react';
+
 import React from 'react';
 import { Game } from '../hooks/useFetchGame';
 import getCroppedImageUrl from '../services/getCroppedImageUrl';
