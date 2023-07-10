@@ -1,8 +1,7 @@
 import { CanceledError } from 'axios';
 import { useState, useEffect } from 'react';
 import APIClient, { FetchDataRespose } from '../services/api-client';
-// import useFetchData, { FetchDataRespose } from './useFetchData';
-
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import { useQuery } from '@tanstack/react-query';
 
@@ -36,19 +35,23 @@ export interface Game {
 const apiClient = new APIClient<Game>('/games');
 
 function useFetchGame(gameQuery: GameQuery) {
-  const fetchedGames = useQuery<FetchDataRespose<Game>, Error>({
+  const fetchedGames = useInfiniteQuery<FetchDataRespose<Game>, Error>({
     //if gameQuery changes then the data would get refetched
     queryKey: ['games', gameQuery],
-    queryFn: () =>
+    queryFn: ({ pageParam = 1 }) =>
       apiClient.fetchData({
         params: {
           genres: gameQuery?.genre?.id,
           platforms: gameQuery?.platform?.id,
           ordering: gameQuery?.ordering,
           search: gameQuery?.searchQuery,
+          page: pageParam,
         },
       }),
     staleTime: 24 * 60 * 60 * 1000,
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    },
   });
   return fetchedGames;
 }

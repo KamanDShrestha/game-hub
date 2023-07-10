@@ -4,6 +4,8 @@ import { GameQuery } from '../App';
 export interface FetchDataRespose<T> {
   count: number;
   results: T[];
+  next?: string | null;
+  previous?: string | null;
 }
 
 const axiosInstance = axios.create({
