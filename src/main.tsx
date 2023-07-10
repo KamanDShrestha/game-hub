@@ -5,14 +5,20 @@ import { App } from './App';
 import './index.css';
 import theme from './theme';
 import { GameProvider } from './contexts/GameProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode={theme.config.intialColorMode} />
-      <GameProvider>
-        <App />
-      </GameProvider>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <ColorModeScript initialColorMode={theme.config.intialColorMode} />
+        <GameProvider>
+          <App />
+          <ReactQueryDevtools />
+        </GameProvider>
+      </ChakraProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

@@ -11,7 +11,7 @@ interface Props {
 }
 
 const GenreList = () => {
-  const { genres, isLoading, error } = useFetchGenres();
+  const { data: genres, isLoading, error } = useFetchGenres();
   return (
     <>
       <Heading as={'h1'} size={'lg'} textAlign={'center'}>
@@ -19,9 +19,9 @@ const GenreList = () => {
       </Heading>
       {isLoading && <Spinner />}
       <VStack align={'start'} marginX={4} marginY={4} gap={4}>
-        {error && <p>{error}</p>}
+        {error && <p>{error.message}</p>}
 
-        {genres.map((genre) => (
+        {genres?.map((genre) => (
           <GenreItem key={genre.id} genre={genre} />
           // <li key={genre.id}>{genre.name}</li>
         ))}
