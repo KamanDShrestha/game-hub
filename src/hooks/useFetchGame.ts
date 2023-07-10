@@ -4,6 +4,7 @@ import APIClient, { FetchDataRespose } from '../services/api-client';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import { useQuery } from '@tanstack/react-query';
+import ms from 'ms';
 
 //while fetching the data we are getting the object with id and name property, so we are providing the type to the variables
 
@@ -48,7 +49,7 @@ function useFetchGame(gameQuery: GameQuery) {
           page: pageParam,
         },
       }),
-    staleTime: 24 * 60 * 60 * 1000,
+    staleTime: ms('24h'),
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
     },
