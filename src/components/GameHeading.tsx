@@ -5,6 +5,8 @@ import { useContext } from 'react';
 import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
 import useFetchGenres from '../hooks/useFetchGenres';
 import useFetchPlatform from '../hooks/useFetchPlatforms';
+import usePlatform from '../hooks/usePlatform';
+import useGenre from '../hooks/useGenre';
 
 interface Props {
   gameQuery: GameQuery;
@@ -14,16 +16,8 @@ const GameHeading = () => {
   const { gameQuery } = useContext(GameContext) as ProvidedContextType;
   const { data: genres } = useFetchGenres();
   const { data: platforms } = useFetchPlatform();
-  const selectedGenre = genres.results.filter(
-    (genre) => genre.id === gameQuery.genreID
-  )[0]?.name;
-  // const selectedPlatform = platforms.results.filter(
-  //   (platform) => platform.id === gameQuery.platformID
-  // )[0]?.name;
-
-  const selectedPlatform = platforms.results.find(
-    (platform) => platform.id === gameQuery.platformID
-  );
+  const selectedGenre = useGenre();
+  const selectedPlatform = usePlatform();
 
   if (gameQuery?.searchQuery) {
     return (
@@ -35,7 +29,7 @@ const GameHeading = () => {
   }
   return (
     <Heading as={'h1'} size={'2xl'}>
-      {`${selectedGenre || ''} ${selectedPlatform?.name || ''} Games`}
+      {`${selectedGenre?.name || ''} ${selectedPlatform?.name || ''} Games`}
     </Heading>
   );
 };
