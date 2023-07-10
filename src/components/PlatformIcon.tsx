@@ -34,7 +34,7 @@ const PlatformIcon = ({ platforms }: Props) => {
     // need to map the name from array of platforms, based on which the icon is to be printed
     <>
       <HStack marginY={1} padding={2}>
-        {platforms.map((platform) => (
+        {platforms?.map((platform) => (
           <Icon
             as={icons[platform.slug]}
             boxSize={4}
