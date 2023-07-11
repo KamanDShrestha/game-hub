@@ -1,7 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
-import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
+import useGameQuery from '../gameStore';
 
 interface Props {
   selectedOrdering: string;
@@ -9,9 +9,8 @@ interface Props {
 }
 
 const OrderBy = () => {
-  const { gameQuery, handleGame } = useContext(
-    GameContext
-  ) as ProvidedContextType;
+  const setOrdering = useGameQuery((store) => store.setOrdering);
+  const ordering = useGameQuery((store) => store.gameQuery.ordering);
   const sortOrder = [
     { value: '', label: 'Relevance' },
     { value: '-added', label: 'Date added' },
@@ -20,9 +19,7 @@ const OrderBy = () => {
     { value: '-metacritic', label: 'Popularity' },
     { value: '-rating', label: 'Average Rating' },
   ];
-  const selectedSort = sortOrder.find(
-    (order) => order.value === gameQuery.ordering
-  );
+  const selectedSort = sortOrder.find((order) => order.value === ordering);
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
@@ -33,7 +30,7 @@ const OrderBy = () => {
           <MenuItem
             key={order.value}
             value={order.value}
-            onClick={() => handleGame({ ...gameQuery, ordering: order.value })}
+            onClick={() => setOrdering(order.value)}
           >
             {order.label}
           </MenuItem>

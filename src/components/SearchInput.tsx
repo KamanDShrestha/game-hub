@@ -4,20 +4,17 @@ import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { BsSearch } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
 import { useContext } from 'react';
-import { GameContext } from '../contexts/GameProvider';
-import { ProvidedContextType } from '../contexts/GameProvider';
+import usePlatform from '../hooks/usePlatform';
+import useGameQuery from '../gameStore';
 
 const SearchInput = () => {
-  const { gameQuery, handleGame } = useContext(
-    GameContext
-  ) as ProvidedContextType;
-
   const inputRef = useRef<HTMLInputElement>(null);
+  const setSearchQuery = useGameQuery((store) => store.setSearchQuery);
   useEffect(() => {
     function callback(e: KeyboardEvent) {
       if (inputRef.current == null) return;
       if (e.key === 'Enter') {
-        handleGame({ ...gameQuery, searchQuery: inputRef.current.value });
+        setSearchQuery(inputRef.current.value);
       }
     }
     window.addEventListener('keydown', (e) => callback(e));

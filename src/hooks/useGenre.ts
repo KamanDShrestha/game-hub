@@ -1,12 +1,10 @@
-import { ProvidedContextType, GameContext } from '../contexts/GameProvider';
-import { useContext } from 'react';
-import useFetchGame from './useFetchGame';
 import useFetchGenres from './useFetchGenres';
+import useGameQuery from '../gameStore';
 function useGenre() {
-  const { gameQuery } = useContext(GameContext) as ProvidedContextType;
+  const genreID = useGameQuery((store) => store.gameQuery.genreID);
   const { data: genres } = useFetchGenres();
 
-  return genres.results.find((genre) => genre.id === gameQuery.genreID);
+  return genres.results.find((genre) => genre.id === genreID);
 }
 
 export default useGenre;

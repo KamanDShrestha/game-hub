@@ -1,10 +1,7 @@
-import { CanceledError } from 'axios';
-import { useState, useEffect } from 'react';
 import APIClient, { FetchDataRespose } from '../services/api-client';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { GameQuery } from '../App';
-import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
+import useGameQuery from '../gameStore';
 
 //while fetching the data we are getting the object with id and name property, so we are providing the type to the variables
 
@@ -35,7 +32,8 @@ export interface Game {
 
 const apiClient = new APIClient<Game>('/games');
 
-function useFetchGame(gameQuery: GameQuery) {
+function useFetchGame() {
+  const { gameQuery } = useGameQuery();
   const fetchedGames = useInfiniteQuery<FetchDataRespose<Game>, Error>({
     //if gameQuery changes then the data would get refetched
     queryKey: ['games', gameQuery],

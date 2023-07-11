@@ -9,25 +9,15 @@ import PlatformSelection from './components/PlatformSelection';
 import { Platform } from './hooks/useFetchGame';
 import OrderBy from './components/OrderBy';
 import GameHeading from './components/GameHeading';
-import {
-  GameContext,
-  GameProvider,
-  ProvidedContextType,
-} from './contexts/GameProvider';
 
 // import { GameProvider, useGameContext } from './contexts/GameContextProvider';
 
-export interface GameQuery {
-  genreID: number | undefined;
-  platformID: number | undefined;
-  ordering: string;
-  searchQuery: string;
-}
+
 
 export const App = () => {
-  const { gameQuery, handleGame } = useContext(
-    GameContext
-  ) as ProvidedContextType;
+  // const { gameQuery, handleGame } = useContext(
+  //   GameContext
+  // ) as ProvidedContextType;
 
   //need to be passed onto the Game Grid to fetch the data based on selectedGenre
 
@@ -37,7 +27,7 @@ export const App = () => {
   // );
 
   return (
-    <GameProvider>
+    <>
       <Grid
         templateAreas={{
           base: `"nav" "main"`,
@@ -70,6 +60,6 @@ export const App = () => {
           />
         </GridItem>
       </Grid>
-    </GameProvider>
+    </>
   );
 };

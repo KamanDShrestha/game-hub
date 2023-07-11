@@ -4,16 +4,16 @@ import { Genre } from '../hooks/useFetchGame';
 import { Image, Text, Button } from '@chakra-ui/react';
 import getCroppedImageUrl from '../services/getCroppedImageUrl';
 import styles from './GenreItem.module.css';
-import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
+import useGameQuery from '../gameStore';
 
 interface Props {
   genre: Genre;
 }
 
 const GenreItem = ({ genre }: Props) => {
-  const { gameQuery, handleGame } = useContext(
-    GameContext
-  ) as ProvidedContextType;
+  const setGenreID = useGameQuery((store) => store.setGenreID);
+  const genreID = useGameQuery((store) => store.gameQuery.genreID);
+
   return (
     <>
       <HStack className={styles.each} gap={3.5}>
@@ -30,9 +30,9 @@ const GenreItem = ({ genre }: Props) => {
           fontSize={'lg'}
           whiteSpace={'normal'}
           textAlign={'left'}
-          onClick={() => handleGame({ ...gameQuery, genreID: genre.id })}
-          fontWeight={gameQuery.genreID === genre.id ? 'bold' : 'light'}
-          textDecoration={gameQuery.genreID === genre.id ? 'underline' : 'none'}
+          onClick={() => setGenreID(genre.id)}
+          fontWeight={genreID === genre.id ? 'bold' : 'light'}
+          textDecoration={genreID === genre.id ? 'underline' : 'none'}
         >
           {genre.name}
         </Button>

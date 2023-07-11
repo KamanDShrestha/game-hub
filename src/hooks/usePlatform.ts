@@ -1,12 +1,13 @@
 import { useContext } from 'react';
-import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
+
 import useFetchPlatform from './useFetchPlatforms';
+import useGameQuery from '../gameStore';
 
 function usePlatform() {
-  const { gameQuery } = useContext(GameContext) as ProvidedContextType;
+  const platformID = useGameQuery((store) => store.gameQuery.platformID);
   const { data: platforms } = useFetchPlatform();
   const selectedPlatform = platforms.results.find(
-    (platform) => platform.id === gameQuery.platformID
+    (platform) => platform.id === platformID
   );
   return selectedPlatform;
 }

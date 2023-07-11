@@ -1,30 +1,24 @@
 import { Heading } from '@chakra-ui/react';
 import React from 'react';
-import { GameQuery } from '../App';
+
 import { useContext } from 'react';
-import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
+
 import useFetchGenres from '../hooks/useFetchGenres';
 import useFetchPlatform from '../hooks/useFetchPlatforms';
 import usePlatform from '../hooks/usePlatform';
 import useGenre from '../hooks/useGenre';
-
-interface Props {
-  gameQuery: GameQuery;
-}
+import useGameQuery from '../gameStore';
 
 const GameHeading = () => {
-  const { gameQuery } = useContext(GameContext) as ProvidedContextType;
-  const { data: genres } = useFetchGenres();
-  const { data: platforms } = useFetchPlatform();
   const selectedGenre = useGenre();
   const selectedPlatform = usePlatform();
-
-  if (gameQuery?.searchQuery) {
+  const searchQuery = useGameQuery((store) => store.gameQuery.searchQuery);
+  if (searchQuery) {
     return (
       <Heading
         as={'h1'}
         size={'2xl'}
-      >{`Search results for '${gameQuery.searchQuery}'`}</Heading>
+      >{`Search results for '${searchQuery}'`}</Heading>
     );
   }
   return (

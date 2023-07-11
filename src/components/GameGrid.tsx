@@ -4,19 +4,12 @@ import useFetchGame, { Game } from '../hooks/useFetchGame';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
-import { GameQuery } from '../App';
+
 import { useContext } from 'react';
-import { GameContext, ProvidedContextType } from '../contexts/GameProvider';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-interface Props {
-  // selectedGenre: Genre | null;
-  // selectedPlatform: Platform | null;
-  gameQuery: GameQuery;
-}
-
 const GameGrid = () => {
-  const { gameQuery } = useContext(GameContext) as ProvidedContextType;
   const {
     data,
     error,
@@ -24,7 +17,7 @@ const GameGrid = () => {
     fetchNextPage,
     isFetchingNextPage,
     hasNextPage,
-  } = useFetchGame(gameQuery);
+  } = useFetchGame();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const fetchedGameCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
@@ -32,7 +25,7 @@ const GameGrid = () => {
   return (
     <Box>
       <InfiniteScroll
-        dataLength={fetchedGameCount} //This is important field to render the next data
+        dataLength={fetchedGameCount}
         next={fetchNextPage}
         hasMore={!!hasNextPage}
         loader={<h4>Loading...</h4>}
