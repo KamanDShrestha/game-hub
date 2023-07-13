@@ -1,10 +1,8 @@
 import { Grid, GridItem, Show, HStack } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';
-import React from 'react';
 import GameGrid from '../components/GameGrid';
 import GameHeading from '../components/GameHeading';
 import GenreList from '../components/GenreList';
-import { NavBar } from '../components/NavBar';
 import OrderBy from '../components/OrderBy';
 import PlatformSelection from '../components/PlatformSelection';
 
