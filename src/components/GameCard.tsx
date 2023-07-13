@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 
 import React from 'react';
-import { Game } from '../hooks/useFetchGame';
+import { Game } from '../entities/Game';
 import getCroppedImageUrl from '../services/getCroppedImageUrl';
 import CriticScore from './CriticScore';
 import PlatformIcon from './PlatformIcon';

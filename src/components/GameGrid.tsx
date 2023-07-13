@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Button, SimpleGrid } from '@chakra-ui/react';
-import useFetchGame, { Game } from '../hooks/useFetchGame';
+import useFetchGame from '../hooks/useFetchGame';
+import { Game } from '../entities/Game';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';

@@ -1,7 +1,7 @@
 import { VStack } from '@chakra-ui/react';
 import React from 'react';
 import useFetchGenres from '../hooks/useFetchGenres';
-import { Genre } from '../hooks/useFetchGame';
+import { Genre } from '../entities/Genre';
 import Spinner from './Spinner';
 import GenreItem from './GenreItem';
 import { Heading } from '@chakra-ui/react';

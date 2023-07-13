@@ -1,7 +1,7 @@
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import useFetchPlatform from '../hooks/useFetchPlatforms';
-import { Platform } from '../hooks/useFetchGame';
+import { Platform } from '../entities/Platform';
 import { BsChevronDown } from 'react-icons/bs';
 import { Button } from '@chakra-ui/react';
 
