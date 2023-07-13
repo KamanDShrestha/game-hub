@@ -4,6 +4,7 @@ import useFetchGameDetail from '../hooks/useFetchGameDetail';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import Loader from '../components/Spinner';
 import ErrorPage from './ErrorPage';
+import ExpandableText from '../components/ExpandableText';
 
 const GameDetail = () => {
   const { slug } = useParams();
@@ -18,7 +19,8 @@ const GameDetail = () => {
     <>
       <Box padding={5}>
         <Heading>{data?.name}</Heading>
-        <Text>{data?.description_raw}</Text>
+
+        <ExpandableText>{data?.description_raw}</ExpandableText>
       </Box>
     </>
   );
