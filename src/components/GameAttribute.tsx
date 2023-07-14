@@ -1,8 +1,5 @@
-import React from 'react';
-import { Box, Heading, Text, VStack } from '@chakra-ui/react';
-import CriticScore from './CriticScore';
+import { Box, Heading } from '@chakra-ui/react';
 
-import { Platform } from '../entities/Platform';
 import { ReactNode } from 'react';
 export interface Attribute {
   id: number;

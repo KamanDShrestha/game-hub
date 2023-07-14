@@ -1,11 +1,6 @@
-import { Image, SimpleGrid } from '@chakra-ui/react';
-import React from 'react';
-import APIClient from '../services/api-client';
-import { Screenshots } from '../entities/Screenshots';
+import { Image, SimpleGrid, Text } from '@chakra-ui/react';
 import useFetchScreenshots from '../hooks/useFetchScreenshots';
 import Loader from './Spinner';
-import { Text } from '@chakra-ui/react';
-import getCroppedImageUrl from '../services/getCroppedImageUrl';
 
 interface Props {
   slug: string;
