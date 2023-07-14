@@ -6,15 +6,20 @@ import { FaSearch } from 'react-icons/fa';
 import { useContext } from 'react';
 import usePlatform from '../hooks/usePlatform';
 import useGameQuery from '../gameStore';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const SearchInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const setSearchQuery = useGameQuery((store) => store.setSearchQuery);
+  const { id } = useParams();
+  console.log(id);
+  const navigate = useNavigate();
   useEffect(() => {
     function callback(e: KeyboardEvent) {
       if (inputRef.current == null) return;
       if (e.key === 'Enter') {
         setSearchQuery(inputRef.current.value);
+        navigate('/');
       }
     }
     window.addEventListener('keydown', (e) => callback(e));

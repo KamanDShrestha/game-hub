@@ -6,17 +6,21 @@ import darklogo from '../assets/gamehub-low-resolution-logo-color-on-transparent
 import ColorSwitch from './ColorSwitch';
 import SearchInput from './SearchInput';
 import { useColorMode } from '@chakra-ui/react';
-
+import { Link } from 'react-router-dom';
 export const NavBar = () => {
   const { colorMode } = useColorMode();
   // const {setGameQuery} = useGameContext();
 
   return (
     <HStack padding='10px'>
-      <Image
-        src={colorMode === 'light' ? lightlogo : darklogo}
-        boxSize='60px'
-      />
+      <Link to={'/'}>
+        <Image
+          src={colorMode === 'light' ? lightlogo : darklogo}
+          boxSize='60px'
+          objectFit={'cover'}
+          margin={1}
+        />
+      </Link>
       <SearchInput />
       <ColorSwitch />
     </HStack>
