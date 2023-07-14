@@ -1,12 +1,10 @@
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
-import { Box, Button, SimpleGrid } from '@chakra-ui/react';
+import Game from '../entities/Game';
 import useFetchGame from '../hooks/useFetchGame';
-import { Game } from '../entities/Game';
 import GameCard from './GameCard';
-import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from './GameCardContainer';
-
-import { useContext } from 'react';
+import GameCardSkeleton from './GameCardSkeleton';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 

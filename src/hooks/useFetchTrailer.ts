@@ -1,7 +1,6 @@
-import { Game } from '../entities/Game';
-import { Trailer } from '../entities/Trailer';
-import APIClient, { FetchDataRespose } from '../services/api-client';
 import { useQuery } from '@tanstack/react-query';
+import Trailer from '../entities/Trailer';
+import APIClient, { FetchDataRespose } from '../services/api-client';
 
 const apiClient = new APIClient<Trailer>('/games');
 

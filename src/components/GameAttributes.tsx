@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, SimpleGrid } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import { Game } from '../entities/Game';
+import Game from '../entities/Game';
 import CriticScore from './CriticScore';
 import GameAttribute from './GameAttribute';
 import { Text } from '@chakra-ui/react';

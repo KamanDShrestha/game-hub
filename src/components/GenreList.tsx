@@ -1,10 +1,8 @@
-import { VStack } from '@chakra-ui/react';
-import React from 'react';
+import { Heading, VStack } from '@chakra-ui/react';
+import Genre from '../entities/Genre';
 import useFetchGenres from '../hooks/useFetchGenres';
-import { Genre } from '../entities/Genre';
-import Spinner from './Spinner';
 import GenreItem from './GenreItem';
-import { Heading } from '@chakra-ui/react';
+import Spinner from './Spinner';
 
 interface Props {
   onSelectedGenre: (genre: Genre) => void;

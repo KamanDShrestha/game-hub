@@ -13,14 +13,14 @@ export const NavBar = () => {
 
   return (
     <HStack padding='10px'>
-      <Link to={'/'}>
-        <Image
-          src={colorMode === 'light' ? lightlogo : darklogo}
-          boxSize='60px'
-          objectFit={'cover'}
-          margin={1}
-        />
-      </Link>
+      {/* <Link to={'/'} style={{ display: 'inline' }}> */}
+      <Image
+        src={colorMode === 'light' ? lightlogo : darklogo}
+        boxSize='60px'
+        objectFit={'cover'}
+        margin={1}
+      />
+      {/* </Link> */}
       <SearchInput />
       <ColorSwitch />
     </HStack>

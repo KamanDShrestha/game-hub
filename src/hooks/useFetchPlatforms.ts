@@ -2,7 +2,7 @@
 import platforms from '../data/platforms';
 import APIClient, { FetchDataRespose } from '../services/api-client';
 import { useQuery } from '@tanstack/react-query';
-import { Platform } from '../entities/Platform';
+import Platform from '../entities/Platform';
 import ms from 'ms';
 //just to fetch the platform values
 

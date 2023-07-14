@@ -1,7 +1,5 @@
-import { useContext } from 'react';
-
-import useFetchPlatform from './useFetchPlatforms';
 import useGameQuery from '../gameStore';
+import useFetchPlatform from './useFetchPlatforms';
 
 function usePlatform() {
   const platformID = useGameQuery((store) => store.gameQuery.platformID);

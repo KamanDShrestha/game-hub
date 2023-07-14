@@ -1,8 +1,8 @@
 import { Attribute } from '../components/GameAttribute';
-import { Genre } from './Genre';
-import { Platform } from './Platform';
+import Genre from './Genre';
+import Platform from './Platform';
 
-export interface Game {
+export default interface Game {
   id: number | null;
   name: string;
   description_raw: string;
