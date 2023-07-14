@@ -1,3 +1,5 @@
+import { Attribute } from '../components/GameAttribute';
+import { Genre } from './Genre';
 import { Platform } from './Platform';
 
 export interface Game {
@@ -10,4 +12,6 @@ export interface Game {
   rating: number;
   rating_top: number;
   slug: string;
+  genres: Genre[];
+  publishers: Attribute[];
 }

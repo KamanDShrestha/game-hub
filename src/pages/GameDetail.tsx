@@ -5,7 +5,9 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import Loader from '../components/Spinner';
 import ErrorPage from './ErrorPage';
 import ExpandableText from '../components/ExpandableText';
-
+import GameAttributes from '../components/GameAttributes';
+import GameTrailer from '../components/GameTrailer';
+import GameScreenshots from '../components/GameScreenshots';
 const GameDetail = () => {
   const { slug } = useParams();
   console.log(slug);
@@ -18,9 +20,12 @@ const GameDetail = () => {
   return (
     <>
       <Box padding={5}>
-        <Heading>{data?.name}</Heading>
+        <Heading>{data.name}</Heading>
 
-        <ExpandableText>{data?.description_raw}</ExpandableText>
+        <ExpandableText>{data.description_raw}</ExpandableText>
+        <GameAttributes game={data} />
+        <GameTrailer slug={slug!} />
+        <GameScreenshots slug={slug!} />
       </Box>
     </>
   );

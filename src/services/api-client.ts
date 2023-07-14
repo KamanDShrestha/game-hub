@@ -33,6 +33,12 @@ class APIClient<T> {
       .get<T>(`${this.endpoint}/${id}`)
       .then((res) => res.data);
   };
+
+  fetchTrailer = (id: string) => {
+    return axiosInstance
+      .get<FetchDataRespose<T>>(`${this.endpoint}/${id}/movies`)
+      .then((res) => res.data);
+  };
 }
 
 export default APIClient;
